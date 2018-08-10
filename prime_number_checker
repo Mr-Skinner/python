@@ -1,0 +1,23 @@
+your_number = int(raw_input("Please give me a number: "))
+
+def is_prime():
+    
+    prime_list = range(1, your_number)
+    
+    if your_number == 0:
+        print ("Your number is not prime!")
+    if your_number < 0:
+        print ("Your number is not prime!")
+        
+    for i in prime_list:
+      if your_number == 2:
+          print ("Your number is prime!")
+          break
+      if your_number % i == 0:
+          print ("Your number is not prime!")
+          break
+      else:
+          print ("Your number is prime!")
+          break
+    
+is_prime()    
