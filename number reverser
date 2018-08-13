@@ -1,0 +1,24 @@
+your_number = int(raw_input("Please enter a number: "))
+
+def reverser(x):
+   
+   if x < 0:
+       x = abs(x)
+       reverse = 0
+       while x > 0:
+           y = x % 10
+           reverse = (reverse * 10) + y 
+           x = x // 10
+       reverse = -(reverse)    
+       print ("\n The reverse of your number is: %d" %reverse) 
+       
+   else:
+       reverse = 0
+       while x > 0:
+           y = x % 10
+           reverse = (reverse * 10) + y 
+           x = x // 10
+       print ("\n The reverse of your number is: %d" %reverse)    
+       
+
+reverser(your_number)    
