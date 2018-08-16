@@ -1,0 +1,43 @@
+import random
+
+"""Cows and Bulls Game!"""
+
+print ("Welcome to the Cows and Bulls Game!" '\n''\n'
+       "This is a 4 digit number guessing game where for each digit" +
+       " you guess correctly and in the right place you get a cow, " + 
+       "and for every digit you guess correctly but in the wrong place" + 
+       " you get a bull." '\n''\n'
+       "Let's play!" '\n')
+
+
+    
+def compare_nums(x, num):
+    cows = 0
+    bulls = 0
+    list_x = list(str(x))
+    list_num = list(num)
+    for i in range(0, 4):
+        if list_num[i] == list_x[i]:
+            cows += 1
+        elif list_num[i] in list_x:
+            bulls += 1
+    return cows, bulls
+        
+x = random.randint(1000,9999)
+    
+for turn in range(5):
+    print "Turn", turn + 1
+    guess = raw_input("Please make your guess, enter a 4 digit number: ")
+        
+    if guess == x:
+        print "Congratulations! You've guessed my number!"
+        break
+        
+    if turn == 4:
+        print ("Game Over!" '\n' "My number was %d" %x)
+        break
+        
+    elif guess != x:
+        cows, bulls = compare_nums(x, guess)
+        print ("Not quite! You have " + str(cows) + " cows, and "
+                   + str(bulls) + " bulls."'\n')              
