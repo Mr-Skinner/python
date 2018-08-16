@@ -1,16 +1,6 @@
 import random
-
 """Cows and Bulls Game!"""
 
-print ("Welcome to the Cows and Bulls Game!" '\n''\n'
-       "This is a 4 digit number guessing game where for each digit" +
-       " you guess correctly and in the right place you get a cow, " + 
-       "and for every digit you guess correctly but in the wrong place" + 
-       " you get a bull." '\n''\n'
-       "Let's play!" '\n')
-
-
-    
 def compare_nums(x, num):
     cows = 0
     bulls = 0
@@ -22,22 +12,41 @@ def compare_nums(x, num):
         elif list_num[i] in list_x:
             bulls += 1
     return cows, bulls
-        
-x = random.randint(1000,9999)
+
+def play_again():
+    again = raw_input("Would you like to play again? Y/N?: ")
+    global game
+    if again == 'N':
+        game = False
+    elif again == 'Y':
+        game = True
+  
+
+game = True
     
-for turn in range(5):
-    print "Turn", turn + 1
-    guess = raw_input("Please make your guess, enter a 4 digit number: ")
+while game:
+    print ("Welcome to the Cows and Bulls Game!" '\n''\n'
+       "This is a 4 digit number guessing game where for each digit" +
+       " you guess correctly and in the right place you get a cow, " + 
+       "and for every digit you guess correctly but in the wrong place" + 
+       " you get a bull." '\n''\n'
+       "Let's play!" '\n')
+    x = random.randint(1000,9999)
+    
+    for turn in range(5):
+        print "Turn", turn + 1
+        guess = raw_input("Please make your guess, enter a 4 digit number: ")
         
-    if guess == x:
-        print "Congratulations! You've guessed my number!"
-        break
+        if guess == x:
+            print "Congratulations! You've guessed my number!"
+            break
+            
+        if turn == 4:
+            print ("Game Over!" '\n' "My number was %d" %x)
+            break
         
-    if turn == 4:
-        print ("Game Over!" '\n' "My number was %d" %x)
-        break
-        
-    elif guess != x:
-        cows, bulls = compare_nums(x, guess)
-        print ("Not quite! You have " + str(cows) + " cows, and "
-                   + str(bulls) + " bulls."'\n')              
+        elif guess != x:
+            cows, bulls = compare_nums(x, guess)
+            print ("Not quite! You have " + str(cows) + " cows, and "
+                       + str(bulls) + " bulls."'\n')  
+    play_again()                                  
